@@ -1,12 +1,14 @@
 package com.example.fitstopwatch
 
+import android.content.Intent
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.OnClickListener
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         text1=findViewById(R.id.text1)
         text2=findViewById(R.id.text2)
-        btn=findViewById(R.id.getstart)
+        btn=findViewById(R.id.getstart) as Button
         //loading animation
         atg=AnimationUtils.loadAnimation(this,R.anim.atg)
         txt=AnimationUtils.loadAnimation(this,R.anim.txt)
@@ -41,5 +43,16 @@ class MainActivity : AppCompatActivity() {
         text1.typeface= Mlight
         text2.typeface=MMedium
         btn.typeface=MRegular
+
+        //onclick event
+        btn.setOnClickListener(OnClickListener {
+            val intent = Intent(this@MainActivity, Stopwatch::class.java)
+            startActivity(intent)
+        })
+
+
+
+        }
+
+
     }
-}
