@@ -32,17 +32,19 @@ class Stopwatch : AppCompatActivity() {
         //customize font
         btnstart.typeface = MMedium
 
-        //onclick
+        //StartNow onclick
         btnstart.setOnClickListener(View.OnClickListener {
+           // Toast.makeText(this, "Smileys = " + ("\ud83d\ude01"),Toast.LENGTH_SHORT).show();
             imganchor.startAnimation(roundingalone)
             btnstop.animate().alpha(1F).translationY((-80).toFloat()).setDuration(300).start();
             btnstart.animate().alpha(0F).setDuration(300).start()
             timer.setBase(SystemClock.elapsedRealtime())
             timer.start()
         })
+                //Finish WorkOut onclick
                 btnstop.setOnClickListener(View.OnClickListener {
-                    val elapsedMillis: Long =
-                        SystemClock.elapsedRealtime() - timer.getBase()
+                    val elapsedMillis: Long = SystemClock.elapsedRealtime() - timer.getBase()
+                    println("Duration $elapsedMillis")
                     Toast.makeText(this,"Workout Duration: " + elapsedMillis, Toast.LENGTH_SHORT).show();
                     imganchor.clearAnimation()
                     btnstart.animate().alpha(1F).start()
